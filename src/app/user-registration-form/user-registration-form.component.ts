@@ -9,7 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./user-registration-form.component.css'],
 })
 export class UserRegistrationFormComponent {
-  @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
+  @Input() userData = { userName: '', password: '', email: '', birthday: '' };
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
@@ -21,7 +21,6 @@ export class UserRegistrationFormComponent {
   registerUser(): void {
     this.fetchApiData.userRegistration(this.userData).subscribe(
       (result) => {
-        console.log(result);
         this.dialogRef.close();
         this.snackBar.open('User registration successful', 'OK', {
           duration: 2000,
