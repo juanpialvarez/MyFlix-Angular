@@ -27,7 +27,7 @@ export class UserRegistrationFormComponent {
         });
       },
       (result) => {
-        this.snackBar.open('User registration successful', 'OK', {
+        this.snackBar.open('User registration failed', 'OK', {
           duration: 2000,
         });
       }
