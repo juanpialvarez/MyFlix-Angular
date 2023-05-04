@@ -1,3 +1,22 @@
+/**
+ * Imports
+ * @module MatButtonModule
+ * @module BrowserModule
+ * @module HttpClientModule
+ * @module BrowserAnimationsModule
+ * @module MatCardModule
+ * @module AppRoutingModule
+ * @module MatInputModule
+ * @module MatButtonModule
+ * @module MatFormFieldModule
+ * @module MatDialogModule
+ * @module MatSnackBarModule
+ * @module FormsModule
+ * @module MatMenuModule
+ * @module RouterModule
+ * @module MatIconModule
+ */
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Route, RouterModule, Routes } from '@angular/router';
@@ -24,6 +43,14 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { DetailsComponent } from './details/details.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { EditComponent } from './edit/edit.component';
+
+/**
+ * Routes
+ * @constant appRoutes
+ * Includes all routes used in the app
+ * welcome is the default
+ * the routes are: welcome, movies, profile
+ */
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },

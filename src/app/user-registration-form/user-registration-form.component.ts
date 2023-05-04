@@ -1,4 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+/**
+ * Import
+ * @module Input
+ * @module MatDialogRef
+ * @module FetchApiDataService
+ * @module MatSnackBar
+ */
+
+import { Component, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -8,6 +16,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './user-registration-form.component.html',
   styleUrls: ['./user-registration-form.component.css'],
 })
+
+/**
+ * UserRegistrationFormComponent
+ * Contains logic to display a modal with fields
+ * to sign up the user.
+ */
 export class UserRegistrationFormComponent {
   @Input() userData = { userName: '', password: '', email: '', birthday: '' };
   constructor(

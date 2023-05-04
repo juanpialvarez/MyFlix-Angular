@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+/**
+ * Import
+ * @module UserLoginFormComponent
+ * @module UserRegistrationFormComponent
+ * @module MatDialog
+ */
+
+import { Component } from '@angular/core';
 import { UserLoginFormComponent } from '../user-login-form/user-login-form.component';
 import { UserRegistrationFormComponent } from '../user-registration-form/user-registration-form.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -8,6 +15,12 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './welcome-page.component.html',
   styleUrls: ['./welcome-page.component.css'],
 })
+
+/**
+ * WelcomePageComponent
+ * Displays the sign up and log in buttons which display
+ * the respective modals.
+ */
 export class WelcomePageComponent {
   constructor(public dialog: MatDialog) {}
   ngOnInit(): void {}

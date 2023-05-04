@@ -1,3 +1,12 @@
+/**
+ * Imports
+ * @module FetchApiDataService
+ * @module MatDialog
+ * @module MatSnackBar
+ * @module DetailsComponent
+ * @module EditComponent
+ */
+
 import { Component } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -10,6 +19,15 @@ import { EditComponent } from '../edit/edit.component';
   templateUrl: './profile-page.component.html',
   styleUrls: ['./profile-page.component.css'],
 })
+
+/**
+ * ProfilePageComponent
+ * Contains functionality to display:
+ * - The user details
+ * - A button to delete the user
+ * - A button to edit the user name
+ * - A list of favorite movies
+ */
 export class ProfilePageComponent {
   user: any = {};
   movies: any = localStorage.getItem('movies');

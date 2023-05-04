@@ -1,4 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
+/**
+ * Imports
+ * @module Input
+ * @module MatDialogRef
+ * @module FetchApiDataService
+ * @module MatSnackBar
+ * @module Router
+ */
+
+import { Component, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -9,6 +18,12 @@ import { Router } from '@angular/router';
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css'],
 })
+
+/**
+ * EditComponent
+ * Implements functionality to display a modal where the
+ * user can change their username
+ */
 export class EditComponent {
   @Input() userData = {
     newUserName: '',

@@ -1,3 +1,11 @@
+/**
+ * Imports
+ * @module MatDialog
+ * @module FetchApiDataService
+ * @module MatSnackBar
+ * @module DetailsComponent
+ */
+
 import { Component } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -9,6 +17,14 @@ import { DetailsComponent } from '../details/details.component';
   templateUrl: './movie-card.component.html',
   styleUrls: ['./movie-card.component.css'],
 })
+
+/**
+ * MovieCardComponent
+ * Implements the logic for:
+ * - Displaying all the movies to the user.
+ * - Displaying the DetailsComponent modal
+ * - Adding or removing a movie from favorites.
+ */
 export class MovieCardComponent {
   movies: any = localStorage.getItem('movies');
   user: any = localStorage.getItem('userObject');

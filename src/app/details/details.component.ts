@@ -1,3 +1,9 @@
+/**
+ * Imports
+ * @module Inject
+ * @module MAT_DIALOG_DATA
+ */
+
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -6,6 +12,14 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.css'],
 })
+
+/**
+ * Details Component:
+ * Imports and injects data from:
+ * @module MovieCardComponent
+ * and generates a template logic for displaying
+ * genre, director, and synopsis modals
+ */
 export class DetailsComponent {
   movie: any = {};
   constructor(
