@@ -15,4 +15,9 @@ export class NavigationComponent {
   gotToMovies(): void {
     this.router.navigate(['movies']);
   }
+
+  logOut(): void {
+    localStorage.clear();
+    this.router.navigate(['welcome']);
+  }
 }

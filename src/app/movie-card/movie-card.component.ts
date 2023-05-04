@@ -10,7 +10,7 @@ import { DetailsComponent } from '../details/details.component';
   styleUrls: ['./movie-card.component.css'],
 })
 export class MovieCardComponent {
-  movies: any[] = [];
+  movies: any = localStorage.getItem('movies');
   user: any = localStorage.getItem('userObject');
 
   constructor(
@@ -20,17 +20,10 @@ export class MovieCardComponent {
   ) {}
 
   ngOnInit(): void {
-    this.getMovies();
+    this.movies = JSON.parse(this.movies);
     this.getUser();
     this.fetchMovies.Refreshrequired.subscribe((response) => {
       this.getUser();
-    });
-  }
-
-  getMovies(): void {
-    this.fetchMovies.getAllMovies().subscribe((resp: any) => {
-      this.movies = resp;
-      return this.movies;
     });
   }
 

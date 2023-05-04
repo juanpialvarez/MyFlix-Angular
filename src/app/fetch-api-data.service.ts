@@ -112,7 +112,7 @@ export class FetchApiDataService {
     return this.http
       .put(
         apiUrl + 'users/' + user + '/movies/' + movieId,
-        { FavoriteMovie: movieId },
+        { movieId: movieId },
         {
           headers: new HttpHeaders({
             Authorization: 'Bearer ' + token,
@@ -122,12 +122,19 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  changeUserName(userName: string, newUserName: string): Observable<any> {
+  changeUserName(newUserName: string): Observable<any> {
+    const user = localStorage.getItem('user');
     const token = localStorage.getItem('token');
     return this.http
-      .put(apiUrl + 'users/' + userName + '/' + newUserName, {
-        headers: new HttpHeaders({ Authorization: `Bearer ${token}` }),
-      })
+      .put(
+        `${apiUrl}users/username/${user}/${newUserName}`,
+        { newName: newUserName },
+        {
+          headers: new HttpHeaders({
+            Authorization: 'Bearer ' + token,
+          }),
+        }
+      )
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
@@ -141,10 +148,11 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  deleteUser(userName: string): Observable<any> {
+  deleteUser(): Observable<any> {
+    const user = localStorage.getItem('user');
     const token = localStorage.getItem('token');
     return this.http
-      .delete(apiUrl + 'users/' + userName, {
+      .delete(apiUrl + 'users/' + user, {
         headers: new HttpHeaders({ Authorization: `Bearer ${token}` }),
       })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
