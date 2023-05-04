@@ -5,39 +5,24 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { DetailsComponent } from '../details/details.component';
 
 @Component({
-  selector: 'app-movie-card',
-  templateUrl: './movie-card.component.html',
-  styleUrls: ['./movie-card.component.css'],
+  selector: 'app-profile-page',
+  templateUrl: './profile-page.component.html',
+  styleUrls: ['./profile-page.component.css'],
 })
-export class MovieCardComponent {
-  movies: any[] = [];
-  user: any = localStorage.getItem('userObject');
+export class ProfilePageComponent {
+  user: any = {};
+  movies: any = [];
 
   constructor(
-    public fetchMovies: FetchApiDataService,
+    public fetchUser: FetchApiDataService,
     public dialog: MatDialog,
     public snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
-    this.getMovies();
     this.getUser();
-    this.fetchMovies.Refreshrequired.subscribe((response) => {
+    this.fetchUser.Refreshrequired.subscribe((response) => {
       this.getUser();
-    });
-  }
-
-  getMovies(): void {
-    this.fetchMovies.getAllMovies().subscribe((resp: any) => {
-      this.movies = resp;
-      return this.movies;
-    });
-  }
-
-  getUser(): void {
-    this.fetchMovies.getUser().subscribe((resp: any) => {
-      this.user = resp;
-      return this.user;
     });
   }
 
@@ -53,7 +38,7 @@ export class MovieCardComponent {
 
   addRemoveFromFavorites(id: string, liked: boolean): void {
     if (liked) {
-      this.fetchMovies.deleteFavoriteMovie(id).subscribe(
+      this.fetchUser.deleteFavoriteMovie(id).subscribe(
         (result) => {
           this.snackBar.open('Removed movie successfully', 'OK', {
             duration: 2000,
@@ -66,7 +51,7 @@ export class MovieCardComponent {
         }
       );
     } else if (!liked) {
-      this.fetchMovies.addFavoriteMovie(id).subscribe(
+      this.fetchUser.addFavoriteMovie(id).subscribe(
         (result) => {
           this.snackBar.open('Added movie successfully', 'OK', {
             duration: 2000,
@@ -79,5 +64,18 @@ export class MovieCardComponent {
         }
       );
     }
+  }
+
+  getUser(): void {
+    this.fetchUser.getUser().subscribe((resp: any) => {
+      this.user = resp;
+      this.fetchUser.getAllMovies().subscribe((movies: any) => {
+        this.movies = movies.filter((movie: any) =>
+          this.user.favouriteMovies.includes(movie._id)
+        );
+        return this.user, this.movies;
+      });
+      return this.user;
+    });
   }
 }

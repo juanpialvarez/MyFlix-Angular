@@ -23,8 +23,10 @@ export class UserLoginFormComponent {
   loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe(
       (result) => {
-        localStorage.setItem('username', result.user.userName);
+        console.log(result.user);
         localStorage.setItem('token', result.token);
+        localStorage.setItem('user', result.user.userName);
+        localStorage.setItem('userObject', JSON.stringify(result.user));
         this.dialogRef.close();
         this.snackBar.open('Login successful', 'OK', {
           duration: 2000,
